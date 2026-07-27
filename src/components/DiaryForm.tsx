@@ -15,6 +15,7 @@ import confetti from 'canvas-confetti';
 import { EmotionSelector } from './EmotionSelector';
 import { EmotionType, DiaryEntry, AiAnalysisResult } from '../types';
 import { addDiaryEntry } from '../utils/storage';
+import { analyzeDiaryEntry } from '../utils/aiService';
 
 interface DiaryFormProps {
   onEntryAdded: (newEntry: DiaryEntry) => void;
@@ -119,17 +120,7 @@ export const DiaryForm: React.FC<DiaryFormProps> = ({
     }, 2000);
 
     try {
-      const res = await fetch('/api/analyze-entry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content,
-          emotion,
-          date,
-        }),
-      });
-
-      const aiData: AiAnalysisResult = await res.json();
+      const aiData: AiAnalysisResult = await analyzeDiaryEntry(content, emotion, date);
 
       const time = new Date().toLocaleTimeString('ko-KR', {
         hour: '2-digit',
