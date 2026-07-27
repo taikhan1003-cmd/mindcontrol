@@ -1,0 +1,6 @@
+{
+  "name": "AI 감정 일기장 & 힐링 상담소",
+  "description": "청소년을 위한 따뜻하고 몽환적인 AI 감정 일기장, 감정 분석, 달력, 힐링 음악 및 활동 추천 웹 앱",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
